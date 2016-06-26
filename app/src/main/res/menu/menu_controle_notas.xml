@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ControleDeVendasActivity">
+    <item
+        android:id="@+id/cadastro_remover"
+        android:orderInCategory="100"
+        android:title="Remover"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cadastro_inserir"
+        android:icon="@mipmap/ic_cadastro"
+        android:title="Inserir"
+        app:showAsAction="always" />
+</menu>
