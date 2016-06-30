@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import br.edu.ifba.mobile.controledevendas.CadastroComprasActivity;
-import br.edu.ifba.mobile.controledevendas.ControleDeVendasActivity;
 import br.edu.ifba.mobile.controledevendas.R;
 import br.edu.ifba.mobile.controledevendas.bd.Compras;
 import br.edu.ifba.mobile.controledevendas.tarefas.ListagemProdutos;
@@ -64,10 +63,10 @@ public class FragmentoListaProdutos extends Fragment {
         {
             if (id == R.id.cadastro_remover)
             {
-                ControleDeVendasActivity atualizacao = new ControleDeVendasActivity();
                 RemocaoCompra remocao = new RemocaoCompra(this.getContext(),this.getCompraSelecionada());
                 remocao.execute();
                 atualizar();
+
             }else if (id == R.id.cadastro_inserir){
                 if (FragmentoListaClientes.getInstancia().getSelecionouCliente() == false)
                     Toast.makeText(getContext(),"Selecione um cliente na tela anterior para inserir uma compra!  ", Toast.LENGTH_LONG).show();

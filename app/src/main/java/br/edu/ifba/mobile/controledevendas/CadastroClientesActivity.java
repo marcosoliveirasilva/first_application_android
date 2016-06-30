@@ -48,7 +48,10 @@ public class CadastroClientesActivity extends AppCompatActivity {
                                                else{
                                                     GravacaoCliente gravacao = new GravacaoCliente(getContexto(), getCliente());
                                                     gravacao.execute();
-                                                    setCampos();
+                                                    cliente = FragmentoListaClientes.getInstancia().getClienteSelecionado();
+
+                                                    if(cliente.getCodigo() == -1)
+                                                        setCampos();
                                                 }
 
                                            }

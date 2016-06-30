@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import br.edu.ifba.mobile.controledevendas.bd.Compras;
-import br.edu.ifba.mobile.controledevendas.bd.FachadaBD;
 import br.edu.ifba.mobile.controledevendas.bd.FachadaBDCompras;
 
 

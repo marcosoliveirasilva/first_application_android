@@ -78,7 +78,7 @@
             android:layout_below="@+id/textView3"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:inputType="date" />
+            android:inputType="phone" />
 
         <Button
             android:layout_width="wrap_content"

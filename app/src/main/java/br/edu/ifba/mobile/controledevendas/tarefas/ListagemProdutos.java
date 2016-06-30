@@ -33,7 +33,6 @@ public class ListagemProdutos extends  AsyncTask<Void, Void, List<Compras>> {
     protected List<Compras> doInBackground(Void... params) { // vai executar em segundo plano. O banco de dados [e executado em segundo plano
         Cliente cliente= FragmentoListaClientes.getInstancia().getClienteSelecionado();
 
-
          List<Compras> produtosListados = FachadaBDCompras.getInstancia().listarCompras(""+cliente.getCodigo());
 
         return produtosListados;
@@ -43,10 +42,14 @@ public class ListagemProdutos extends  AsyncTask<Void, Void, List<Compras>> {
     protected void onPostExecute(List<Compras> produtosListados)//depois da execucao// somente aqui que deve exibir a mensagem
     {
         if(produtosListados.isEmpty()){
-            if (FragmentoListaClientes.getInstancia().getSelecionouCliente() == false)
-                Toast.makeText(contexto,"Selecione um cliente na tela anterior!  ", Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(contexto,"Lista vazia. Cadastre uma Compra!  ", Toast.LENGTH_LONG).show();//toast serve para  notificar. Sao as mensagens do android
+            if (FragmentoListaClientes.getInstancia().getSelecionouCliente() == false) {
+                listaCompras.setAdapter(null);
+                Toast.makeText(contexto, "Selecione um cliente na tela anterior!  ", Toast.LENGTH_LONG).show();
+            }
+            else {
+                listaCompras.setAdapter(null);
+                Toast.makeText(contexto, "Lista vazia. Cadastre uma Compra!  ", Toast.LENGTH_LONG).show();//toast serve para  notificar. Sao as mensagens do android
+            }
         }
         else
         {

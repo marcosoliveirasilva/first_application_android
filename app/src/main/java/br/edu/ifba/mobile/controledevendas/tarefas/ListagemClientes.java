@@ -42,8 +42,8 @@ public class ListagemClientes extends  AsyncTask<Void, Void, List<Cliente>> {
     protected void onPostExecute(List<Cliente> clientes)//depois da execucao// somente aqui que deve exibir a mensagem
     {
         if(clientes.isEmpty()){
-
-        Toast.makeText(contexto,"Lista vazia. Cadastre um Cliente!  ", Toast.LENGTH_LONG).show();//toast serve para  notificar. Sao as mensagens do android
+            listaClientes.setAdapter(null);
+            Toast.makeText(contexto,"Lista vazia. Cadastre um Cliente!  ", Toast.LENGTH_LONG).show();//toast serve para  notificar. Sao as mensagens do android
         }
         else
         {

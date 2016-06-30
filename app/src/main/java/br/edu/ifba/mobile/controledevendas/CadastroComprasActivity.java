@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import br.edu.ifba.mobile.controledevendas.bd.Cliente;
 import br.edu.ifba.mobile.controledevendas.bd.Compras;
 import br.edu.ifba.mobile.controledevendas.fragmentos.FragmentoListaClientes;
@@ -44,11 +48,19 @@ public class CadastroComprasActivity extends AppCompatActivity {
                                                        preco.getText().toString().equals("") || data.getText().toString().equals("")) {
                                                    Toast.makeText(getContexto(),"Cadastre todos os dados da compra!  ", Toast.LENGTH_LONG).show();
                                                }
-                                               else{
-                                                   GravacaoCompra gravacao = new GravacaoCompra(getContexto(), getCompras());
-                                                   gravacao.execute();
-                                                   setCampos();
+                                               else try {
+                                                   if (validarData(data.getText().toString())) {
+                                                               GravacaoCompra gravacao = new GravacaoCompra(getContexto(), getCompras());
+                                                               gravacao.execute();
+
+                                                                compras = FragmentoListaProdutos.getInstancia().getCompraSelecionada();
+                                                                if(compras.getCodigo() == -1)
+                                                                    setCampos();
+                                                           }
+                                               } catch (ParseException e) {
+                                                   e.printStackTrace();
                                                }
+
 
                                            }
                                        }
@@ -58,6 +70,32 @@ public class CadastroComprasActivity extends AppCompatActivity {
     private Context getContexto()
     {
         return this;
+    }
+
+    private boolean validarData(String dataInformada) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        Date dataPagamento;
+        boolean validado = false;
+
+        try {
+            dataPagamento = sdf.parse(dataInformada);
+            // se passou pra cá, é porque a data é válida
+        } catch(ParseException e) {
+            // se cair aqui, a data é inválida
+            Toast.makeText(getContexto(),"Digite uma data valida e superior a data atual!!  ", Toast.LENGTH_LONG).show();
+            return validado;
+        }
+
+        String diaAtual = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        Date diaCompra = new SimpleDateFormat("DD/mm/yyyy").parse(diaAtual);
+
+        if (diaCompra.compareTo(dataPagamento) < 0)
+            validado = true;
+        else
+            Toast.makeText(getContexto(),"Digite uma data superior a data atual!!  ", Toast.LENGTH_LONG).show();
+
+        return validado;
     }
 
     private Compras getCompras()// pegando o que o usuario colocou na tela
