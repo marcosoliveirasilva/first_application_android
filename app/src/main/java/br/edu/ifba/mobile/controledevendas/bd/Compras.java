@@ -7,7 +7,7 @@ public class Compras {
 	private long codigo = -1;
 	private String cliente;
 	private String produto;
-	private String preco;
+	private double preco;
 	private String data;
 
 	public long getCodigo() {
@@ -34,11 +34,11 @@ public class Compras {
 		this.produto = produto;
 	}
 
-	public String getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(String preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "br.edu.ifba.mobile.controledenotas"
+        applicationId "br.edu.ifba.mobile.controledevendas"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

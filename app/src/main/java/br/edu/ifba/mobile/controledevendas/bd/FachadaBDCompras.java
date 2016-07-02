@@ -37,7 +37,7 @@ public class FachadaBDCompras extends SQLiteOpenHelper {
 	private static String COMANDO_CRIACAO_TABELA_COMPRAS =
 			"CREATE TABLE COMPRAS(" +
 					"CODIGO INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "NOME TEXT, PRODUTO TEXT, PRECO TEXT, DATA TEXT)";
+			+ "NOME TEXT, PRODUTO TEXT, PRECO REAL, DATA TEXT)";
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -108,7 +108,7 @@ public class FachadaBDCompras extends SQLiteOpenHelper {
 				compras.setCodigo(cursor.getLong(cursor.getColumnIndex("CODIGO" )));// setando os campos na tabela disciplina
 				compras.setCliente(cursor.getString(cursor.getColumnIndex("NOME")));
 				compras.setProduto(cursor.getString(cursor.getColumnIndex("PRODUTO")));
-				compras.setPreco(cursor.getString(cursor.getColumnIndex("PRECO")));
+				compras.setPreco(cursor.getDouble(cursor.getColumnIndex("PRECO")));
 				compras.setData(cursor.getString(cursor.getColumnIndex("DATA")));
 
 

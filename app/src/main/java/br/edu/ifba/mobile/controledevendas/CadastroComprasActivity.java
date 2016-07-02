@@ -104,7 +104,7 @@ public class CadastroComprasActivity extends AppCompatActivity {
 
         compras.setCliente("" + cliente.getCodigo());
         compras.setProduto(produto.getText().toString());
-        compras.setPreco(preco.getText().toString());
+        compras.setPreco(Double.parseDouble(preco.getText().toString()));
         compras.setData(data.getText().toString());
 
         return  compras;
@@ -128,7 +128,7 @@ public class CadastroComprasActivity extends AppCompatActivity {
     private void carregarCampos()
     {
         produto.setText(compras.getProduto());
-        preco.setText(compras.getPreco());
+        preco.setText(""+compras.getPreco());
         data.setText(compras.getData());
 
     }
